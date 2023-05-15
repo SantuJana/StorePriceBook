@@ -95,9 +95,11 @@ const Modal = () => {
   }
 
   return (
+    <>
+    {showSelectUnit && <SelectUnit selected={selected} setVisibility={setShowSelectUnit} handleOnSelect={handleOnSelect} />}
     <View style={style.bg} >
       <View style={style.body} />
-      {showSelectUnit && <SelectUnit selected={selected} setVisibility={setShowSelectUnit} handleOnSelect={handleOnSelect} />}
+      
       <View style={style.modal} >
         <Text style={style.heading} >{editProductIndex === -1 ? 'Add Product' : 'Edit Product'}</Text>
         <TextInput placeholder='Product Name' style={style.inputText} value={productName} onChangeText={setProductName} ></TextInput>
@@ -127,6 +129,7 @@ const Modal = () => {
         </View>
       </View>
     </View>
+    </>
   )
 }
 

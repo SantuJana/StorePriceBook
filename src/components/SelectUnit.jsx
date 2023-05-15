@@ -7,59 +7,49 @@ const SelectUnit = ({ selected, setVisibility, handleOnSelect }) => {
     
     return (
         <>
-            <View style={[style.blurLayout, style.absolute]} />
-            <Pressable style={[style.body, style.absolute]} onPress={()=>setVisibility(false)} >
-                <View style={style.list} >
-
+            <Pressable style={[style.blurLayout]} onPress={()=>setVisibility(false)} >
+            <View style={[style.body]} >
+                
+                    {units.length === 0 && <Text  >No Unit Available. Please Add.</Text>}
                     <FlatList
                         data={units}
                         renderItem={({ item, index }) => (
                             <TouchableOpacity style={{ backgroundColor: selected.value === item ? '#2d8665' : '#b3e5d3' }} onPress={() => handleOnSelect(selected.index, item)} >
-                                <Text style={style.listItem} >{item}</Text>
+                                <Text style={[style.listItem, { color: selected.value === item ? '#b3e5d3' : '#2d8665' }]} >{item}</Text>
                             </TouchableOpacity>
                         )}
                         ItemSeparatorComponent={() => <Text style={style.separator} />}
                     />
-                </View>
+                
+            </View>
             </Pressable>
         </>
     )
 }
 
 const style = StyleSheet.create({
-    absolute: {
-        position: 'absolute',
-        top: 0,
-        right: 0,
-        bottom: 0,
-        left: 0,
-    },
+    
     blurLayout: {
-
-        backgroundColor: 'white',
-        zIndex: 100,
-        opacity: 0.7
-    },
-    body: {
-        // backgroundColor: 'red',
-        zIndex: 101,
-        display: 'flex',
+        width: '100%',
+        height: '100%',
         justifyContent: 'center',
         alignItems: 'center',
+        backgroundColor: 'rgba(255, 255, 255, 0.7)',
+        zIndex: 101,
     },
-    list: {
+    body: {
         backgroundColor: 'white',
-        maxHeight: '60%',
+        height: '60%',
         width: '80%',
         elevation: 5,
-        borderRadius: 5
+    },
+    list: {
+        borderRadius: 115
     },
     listItem: {
         fontSize: 18,
         textAlign: 'center',
         padding: 5,
-        // borderBottomWidth: 2,
-        // borderBottomColor: '#79d2a6'
     },
     separator: {
         borderWidth: 1,

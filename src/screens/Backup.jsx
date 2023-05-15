@@ -12,7 +12,7 @@ const Backup = () => {
 
   // initially set backup path
   useEffect(() => {
-    setBackupPath(RNFS.ExternalStorageDirectoryPath + '/Backup/StorePriceBook');
+    setBackupPath(RNFS.DownloadDirectoryPath + '/Backup/StorePriceBook');
   }, []);
 
   const writeBackup = async () => {
@@ -21,10 +21,10 @@ const Backup = () => {
       .then(async (success) => {
         await RNFS.writeFile(backupPath + '/utils.json', JSON.stringify({ units: units }))
           .then(success => Alert.alert("Success", "Backup successfully taken."))
-          
+
       })
       .catch(err => {
-        Alert.alert("Failure", "Unfortunately backup process not completed.");
+        Alert.alert("Failure", "Unfortunately backup process not completed. -> " + err.message);
         console.log(err.message)
       })
 
@@ -40,7 +40,7 @@ const Backup = () => {
             await RNFS.mkdir(backupPath)
             writeBackup()
           } catch (error) {
-            Alert.alert("Failure", "Unfortunately backup process not completed.");
+            Alert.alert("Failure", "Unfortunately backup process not completed. -> " + error.message);
           }
         }
       })

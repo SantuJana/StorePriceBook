@@ -23,44 +23,44 @@ const App = () => {
           screenOptions={{
             drawerActiveBackgroundColor: '#b3e5d3',
             drawerActiveTintColor: '#2d8665',
-            headerTintColor:'#194d3a',
+            headerTintColor: '#194d3a',
             headerTitleAlign: 'center',
-            headerStyle:{
+            headerStyle: {
               backgroundColor: '#b3e5d3',
-              
+
             }
           }}
         >
           <Drawer.Screen name='Home' component={Home} options={{
             header: () => null,
-            drawerIcon:({focused, size})=>(
-              <Icon name="home" size={focused? size+10 : size} color={focused ? '#2d8665' : '#697689'}/>
+            drawerIcon: ({ focused, size }) => (
+              <Icon name="home" size={focused ? size + 10 : size} color={focused ? '#2d8665' : '#697689'} />
+            )
+          }} />
+
+          <Drawer.Screen name='Units' component={AddUnit} options={{
+            drawerIcon: ({ focused, size }) => (
+              <Icon name='bars' size={focused ? size + 10 : size} color={focused ? '#2d8665' : '#697689'} />
             )
           }} />
 
           <Drawer.Screen name='Share Data' component={ShareData} options={{
-            drawerIcon:({focused, size})=>(
-              <Icon name='sharealt' size={focused? size+10 : size} color={focused ? '#2d8665' : '#697689'} />
+            drawerIcon: ({ focused, size }) => (
+              <Icon name='sharealt' size={focused ? size + 10 : size} color={focused ? '#2d8665' : '#697689'} />
             )
           }} />
 
           <Drawer.Screen name='Backup' component={Backup} options={{
-            drawerIcon:({focused, size})=>(
-              <Icon name='clouduploado' size={focused? size+10 : size} color={focused ? '#2d8665' : '#697689'} />
+            drawerIcon: ({ focused, size }) => (
+              <Icon name='clouduploado' size={focused ? size + 10 : size} color={focused ? '#2d8665' : '#697689'} />
             )
-          }}/>
-
-          <Drawer.Screen name='Add Unit' component={AddUnit} options={{
-            drawerIcon:({focused, size})=>(
-              <Icon name='bars' size={focused? size+10 : size} color={focused ? '#2d8665' : '#697689'} />
-            )
-          }}/>
+          }} />
 
           <Drawer.Screen name='Restore' component={RestoreData} options={{
-            drawerIcon:({focused, size})=>(
-              <Icon name='fork' size={focused? size+10 : size} color={focused ? '#2d8665' : '#697689'} />
+            drawerIcon: ({ focused, size }) => (
+              <Icon name='fork' size={focused ? size + 10 : size} color={focused ? '#2d8665' : '#697689'} />
             )
-          }}/>
+          }} />
         </Drawer.Navigator>
       </NavigationContainer>
     </Provider>

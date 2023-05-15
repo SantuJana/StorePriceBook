@@ -28,7 +28,7 @@ const AddUnit = () => {
 
     // add unit
     const handleAdd = () => {
-        inputValue!== '' && dispatch(addUnits(inputValue));
+        inputValue !== '' && dispatch(addUnits(inputValue));
         setInputValue('');
     }
 
@@ -63,9 +63,11 @@ const AddUnit = () => {
                     data={units}
                     renderItem={({ item, index }) => (
                         <View key={index} style={style.item} >
-                            <Text style={{ fontSize: 18 }} >{item}</Text>
+                            <View style={style.unit} >
+                                <Text style={{ fontSize: 18}} >{item}</Text>
+                            </View>
                             <TouchableOpacity style={style.delete} onPress={() => handleDelete(item)} >
-                                <Icon name='trash' size={28} />
+                                <Icon name='trash' size={28} style={{alignSelf: 'center'}} />
                             </TouchableOpacity>
                         </View>
                     )}
@@ -119,24 +121,28 @@ const style = StyleSheet.create({
     },
     item: {
         backgroundColor: '#79d2a6',
-        borderRadius: 50,
-        paddingVertical: 5,
-        paddingHorizontal: 10,
-        display: 'flex',
-        flexDirection: 'row',
-        flexWrap: 'wrap',
-        gap: 5,
-        margin: 5,
+        borderRadius: 10,
+        margin: 2,
         flex: 1,
+        flexDirection: 'row',
         width: '100%',
     },
     list: {
 
     },
     delete: {
-        position: 'absolute',
-        right: 10,
-        alignSelf: 'center'
+        backgroundColor: '#e49091',
+        borderBottomRightRadius: 10,
+        borderTopRightRadius: 10,
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    unit:{
+        flex: 1,
+        alignSelf: 'center',
+        paddingRight: 3,
+        padding: 5,
     }
 })
 
